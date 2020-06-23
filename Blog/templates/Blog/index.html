@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人主页</title>
+</head>
+<body>
+    detail is:
+    <ul>
+    {% for a in homepage_article_list %}
+        <li><a href="{% url 'Blog:details' a.id %}">{{a.title }}</a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
