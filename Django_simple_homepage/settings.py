@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'UserService',
+    'UserService.apps.UserserviceConfig',
     'mdeditor',
     'Blog.apps.BlogConfig',
     'django.contrib.admin',
@@ -133,3 +133,6 @@ STATIC_URL = '/static/'
 # add this for django-mdeditor
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/media/'
+STATICFILES_DIRS = [
+	os.path.join(BASE_DIR,"static")
+]

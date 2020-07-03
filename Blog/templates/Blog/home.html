@@ -1,0 +1,20 @@
+{% extends 'Blog/base.html' %}
+
+{% block blog_post_list %}
+    {% for a in homepage_article_list %}
+        <div class="card mb-4">
+              <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+              <div class="card-body">
+                <h2 class="card-title">{{a.title }}</h2>
+                <p class="card-text">作者： {{a.author}}]</p>
+                <p class="card-text">{{ a.content | truncatewords:3 }} </p>
+                <a href="{% url 'Blog:details' a.id %}" class="btn btn-primary">Read More &rarr;</a>
+              </div>
+              <div class="card-footer text-muted">
+                Posted on {{ a.pub_date }} by {{ a.author }}
+              </div>
+        </div>
+
+
+    {% endfor %}
+{% endblock %}
