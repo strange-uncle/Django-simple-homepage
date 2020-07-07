@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import platform
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,9 +26,14 @@ AUTH_USER_MODEL = 'UserService.BlogUser'
 SECRET_KEY = '^1nr07u9l=e)f2pu#5()4hyw%wkx!d^+a*an222llf#i9@@2!6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# dev machine is Win10, host is CentOS
+DEBUG = False
+if platform.system() == 'Windows':
+    DEBUG = True
+else:
+    DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -85,7 +92,7 @@ DATABASES = {
         # sensitive info are stored in my local sys variables
         'USER': os.environ.get('DJANGO_HOMEPAGE_MYSQL_USER'),
         'PASSWORD': os.environ.get('DJANGO_HOMEPAGE_MYSQL_PASSWORD'),
-        'HOST': os.environ.get('DJANGO_HOMEPAGE_MYSQL_IP'),
+        'HOST': os.environ.get('DJANGO_HOMEPAGE_MYSQL_IP') or 'localhost',
         'PORT': '3306',
     }
 }
